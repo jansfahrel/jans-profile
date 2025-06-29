@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles untuk Aurora Background */
+.aurora-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(100px) saturate(1.5);
+  opacity: 0.7;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    #ff6ec4,
+    #7873f5,
+    #4adeff,
+    #0aff99
+  );
+  background-size: 400% 400%;
+  animation: auroraBG 10s ease infinite;
+}
+
+@keyframes auroraBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Styles untuk setiap "cahaya" aurora */
+.aurora-item {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  animation: moveAurora 10s ease-in-out infinite alternate;
+}
+
+/* Atur ukuran, posisi, dan warna per elemen aurora */
+.aurora-item:nth-child(1) {
+  width: 60vw;
+  height: 60vw;
+  top: -20vw;
+  left: -20vw;
+  background: hsl(180, 70%, 50%); /* Cyan */
+}
+.aurora-item:nth-child(2) {
+  width: 50vw;
+  height: 50vw;
+  bottom: -15vw;
+  right: -15vw;
+  background: hsl(280, 70%, 50%); /* Purple */
+}
+.aurora-item:nth-child(3) {
+  width: 40vw;
+  height: 40vw;
+  bottom: 10vh;
+  left: -10vw;
+  background: hsl(320, 70%, 50%); /* Pink */
+}
+.aurora-item:nth-child(4) {
+  width: 35vw;
+  height: 35vw;
+  top: 10vh;
+  right: -10vw;
+  background: hsl(220, 70%, 60%); /* Blue */
+}
+
+/* Animasi gerakan cahaya aurora */
+@keyframes moveAurora {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(10vw, -10vh) rotate(60deg);
+  }
+}
